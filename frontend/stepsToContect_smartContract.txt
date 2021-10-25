@@ -1,0 +1,22 @@
+after cloning project 
+
+Ganache desktop app always run during the project  // never turn off or close this
+    => you can download it from this link "https://www.trufflesuite.com/ganache" 
+
+npm i
+
+npm audit fix (if required)
+
+update "src/contracts/ContractName.sol" with contract code
+
+update "migrations/2_deploy.js" with contract name
+
+perform "truffle compile"
+
+perform "truffle migrate --reset"
+
+npm start
+
+goto "src/components/App.js" line no. 47 and communicate with your smart contract
+
+Thats all, enjoy your project !!!
