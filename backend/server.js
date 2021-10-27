@@ -24,7 +24,7 @@ db.once('open',()  => console.log('Connected Mongo'))
 /*  ---------------------------------------------  */
 /*            App Use And Set Methods              */
 /*  ---------------------------------------------  */
-var whitelist = ['http://localhost:3001']
+var whitelist = ['http://localhost:3000']
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   console.log(req.header('Origin'));

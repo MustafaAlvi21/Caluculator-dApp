@@ -3,6 +3,8 @@
 # dependencies
 /backend/node_modules
 /frontned/node_modules
+/.git affan
+
 /.pnp
 .pnp.js
 

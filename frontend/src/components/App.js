@@ -22,6 +22,8 @@ function App() {
   const [ H1, setH1 ] = useState("");
   const [ H2, setH2 ] = useState("");
   const [ H3, setH3 ] = useState("");
+  const [ Hash, setTX_Hash ] = useState("");
+  // const [ TX, setTX ] = useState({});
   const [ My_H, setMy_H ] = useState([]);
 
   useEffect(() => {
@@ -142,12 +144,29 @@ function App() {
     const accounts = await web3.eth.getAccounts()
     console.log(accounts);
     await myContract.methods.add( parseInt(V1), parseInt(V2)).send({from: accounts[0]})
-    .then((result) => {                                      
-      console.log(result);
-      saveData(result, accounts[0])
-    }).catch((err) => {
-      console.log(err);
+    .on('transactionHash', function(hash){
+      console.log("transactionHash");
+      console.log(hash);
+      setTX_Hash(hash)
+    })
+    .on('receipt', function(receipt){
+        console.log("receipt");
+        console.log(receipt);
+        saveData(receipt, accounts[0])
+        setTimeout(() => {
+          setTX_Hash("");
+        }, 2000);
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+        console.log("confirmationNumber: "+confirmationNumber);
+    })
+    .on('error', function(error, receipt) {
+        console.log("error");
+        console.log(error);
+        console.log("receipt");
+        console.log(receipt);
     });
+
   }
 
   async function sub(e) {
@@ -156,12 +175,29 @@ function App() {
     const accounts = await web3.eth.getAccounts()
     console.log(accounts);
     await myContract.methods.sub( parseInt(V3), parseInt(V4)).send({from: accounts[0]})
-    .then((result) => {                                      
-      console.log(result);
-      saveData(result, accounts[0])
-    }).catch((err) => {
-      console.log(err);
+    .on('transactionHash', function(hash){
+      console.log("transactionHash");
+      console.log(hash);
+      setTX_Hash(hash)
+    })
+    .on('receipt', function(receipt){
+        console.log("receipt");
+        console.log(receipt);
+        saveData(receipt, accounts[0])
+        setTimeout(() => {
+          setTX_Hash("");
+        }, 2000);
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+        console.log("confirmationNumber: "+confirmationNumber);
+    })
+    .on('error', function(error, receipt) {
+        console.log("error");
+        console.log(error);
+        console.log("receipt");
+        console.log(receipt);
     });
+
   }
 
   async function mul(e) {
@@ -170,12 +206,29 @@ function App() {
     const accounts = await web3.eth.getAccounts()
     console.log(accounts);
     await myContract.methods.mul( parseInt(V5), parseInt(V6)).send({from: accounts[0]})
-    .then((result) => {                                      
-      console.log(result);
-      saveData(result, accounts[0])
-    }).catch((err) => {
-      console.log(err);
+    .on('transactionHash', function(hash){
+      console.log("transactionHash");
+      console.log(hash);
+      setTX_Hash(hash)
+    })
+    .on('receipt', function(receipt){
+        console.log("receipt");
+        console.log(receipt);
+        setTimeout(() => {
+          setTX_Hash("");
+        }, 2000);
+        saveData(receipt, accounts[0])
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+        console.log("confirmationNumber: "+confirmationNumber);
+    })
+    .on('error', function(error, receipt) {
+        console.log("error");
+        console.log(error);
+        console.log("receipt");
+        console.log(receipt);
     });
+
   }
 
   async function div(e) {
@@ -184,24 +237,58 @@ function App() {
     const accounts = await web3.eth.getAccounts()
     console.log(accounts);
     await myContract.methods.div( parseInt(V7), parseInt(V8)).send({from: accounts[0]})
-    .then((result) => {                                      
-      console.log(result);
-      saveData(result, accounts[0])
-    }).catch((err) => {
-      console.log(err);
+    .on('transactionHash', function(hash){
+      console.log("transactionHash");
+      console.log(hash);
+      setTX_Hash(hash)
+    })
+    .on('receipt', function(receipt){
+        console.log("receipt");
+        console.log(receipt);
+        saveData(receipt, accounts[0])
+        setTimeout(() => {
+          setTX_Hash("");
+        }, 2000);
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+        console.log("confirmationNumber: "+confirmationNumber);
+    })
+    .on('error', function(error, receipt) {
+        console.log("error");
+        console.log(error);
+        console.log("receipt");
+        console.log(receipt);
     });
+
   }
   async function inc() {
     const web3 = (window.web3);
     const accounts = await web3.eth.getAccounts()
     console.log(accounts);
     await myContract.methods.inc().send({from: accounts[0]})
-    .then((result) => {                                      
-      console.log(result);
-      saveData(result, accounts[0])
-    }).catch((err) => {
-      console.log(err);
+    .on('transactionHash', function(hash){
+      console.log("transactionHash");
+      console.log(hash);
+      setTX_Hash(hash)
+    })
+    .on('receipt', function(receipt){
+        console.log("receipt");
+        console.log(receipt);
+        saveData(receipt, accounts[0])
+        setTimeout(() => {
+          setTX_Hash("");
+        }, 2000);
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+        console.log("confirmationNumber: "+confirmationNumber);
+    })
+    .on('error', function(error, receipt) {
+        console.log("error");
+        console.log(error);
+        console.log("receipt");
+        console.log(receipt);
     });
+
   }
   
   async function dec() {
@@ -209,18 +296,32 @@ function App() {
     const accounts = await web3.eth.getAccounts()
     console.log(accounts);
     await myContract.methods.dec().send({from: accounts[0]})
-    .then((result) => {                                      
-      console.log(result);
-      saveData(result, accounts[0])
-    }).catch((err) => {
-      console.log(err);
+    .on('transactionHash', function(hash){
+      console.log("transactionHash");
+      console.log(hash);
+      setTX_Hash(hash)
+    })
+    .on('receipt', function(receipt){
+        console.log("receipt");
+        console.log(receipt);
+        saveData(receipt, accounts[0])
+        setTimeout(() => {
+          setTX_Hash("");
+        }, 2000);
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+        console.log("confirmationNumber: "+confirmationNumber);
+    })
+    .on('error', function(error, receipt) {
+        console.log("error");
+        console.log(error);
+        console.log("receipt");
+        console.log(receipt);
     });
+
   }
 
   async function saveData(tx, wallet) {
-    const web3 = (window.web3);
-    const accounts = await web3.eth.getAccounts()
-    console.log(accounts);
     const aaa = await myContract.methods.history(3).call()
 
     await axios.post("http://localhost:4100/saveData", {
@@ -251,6 +352,7 @@ function App() {
 
     <br />  <br />  <br />  <br />
 
+    <h5>Transaction Hash: {Hash} </h5>
     <div>
         <form action="" onSubmit={(e) => add(e)}>
             <input type="number" id="a1" value={V1} onChange={ (e) => { setV1(e.target.value)}} required />

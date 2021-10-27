@@ -28,7 +28,7 @@ router.get("/profile", async(req, res) => {
 })
 router.get("/getData", async(req, res) => {
     wallet = req.query.wallet;
-
+    console.log("get data");
     await DataModel.find({ wallet: wallet},{value: 1}).sort({_id: -1}).limit(3)
     .then((result) => {
         return res.json({result});
@@ -63,15 +63,15 @@ router.post("/saveData", async(req, res, next) => {
             value: value,
             transaction: transaction
         })
-        // .save()
-        // .then((result) => {
-        //     console.log(result);
-            // return res.json({result});
+        .save()
+        .then((result) => {
+            console.log(result);
+            return res.json({result});
             return res.send("result");
-        // }).catch((err) => {
-        //     console.log(err);
-        //     return res.json({err});
-        // });
+        }).catch((err) => {
+            console.log(err);
+            return res.json({err});
+        });
     }
 })
 
